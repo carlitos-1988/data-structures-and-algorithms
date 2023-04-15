@@ -13,7 +13,7 @@ You can assume that neither firstName nor lastName will be blank
 ------------------------------------------------------------------------------------------------ */
 const toLastNames = people => {
   // Solution code here...
-  people.map(person => person + 'Bond');
+  return people.map(person => `${person.firstName} ${person.lastName}`);
 
 };
 
@@ -26,6 +26,8 @@ Write a function named addValues that, given an array of numbers as input, uses 
 
 const addValues = (arr) => {
   // Solution code here...
+  //Needed the 0 at the end here
+  return arr.reduce((a,b) => a + b,0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -42,6 +44,7 @@ Write a function named addPurchases that, given an array of objects as input, us
 
 const addPurchases = (arr) => {
   // Solution code here...
+  return arr.reduce((sumtotal, currentValue) => sumtotal + parseInt(`${currentValue.purchasePrice}`),0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -54,6 +57,7 @@ Note: You may not use the array's built-in length property.
 
 const countNumberOfElements = (arr) => {
   // Solution code here...
+  return arr.reduce((sumTotal) => sumTotal + 1, 0);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -114,6 +118,13 @@ let starWarsData = [{
 
 const returnNames = (arr) => {
   // Solution code here...
+  // return arr.reduce((allPersons, nextPerson)=> `${allPersons}` + `${nextPerson.name},`);
+  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce#concatenating_arrays_contained_in_an_array_of_objects_using_the_spread_syntax_and_initialvalue
+  //example shows with inital value of Animal but empty array can be set
+  return arr.reduce((allPersons, person) => {
+    allPersons.push(person.name);
+    return allPersons;
+  },[]);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -126,6 +137,10 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 
 const reversedString = (str) => {
   // Solution code here...
+  //Same goofy deal with the empty string at the end
+  let stringToChar = Array.from(str);
+  return stringToChar.reduce((reversedString , nextChar) =>nextChar + reversedString,''
+  );
 };
 
 /* ------------------------------------------------------------------------------------------------
