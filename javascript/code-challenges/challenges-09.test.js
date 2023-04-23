@@ -142,8 +142,20 @@ hasChildrenValues(characters, 'Sansa') will return false
 
 const hasChildrenValues = (arr, character) => {
   // Solution code here...
-  let mySearch = Object.values(arr).map(x =>x.children).flat().includes(character);
-  return mySearch;
+  //let mySearch = Object.values(arr).map(x =>x.children).flat().includes(character);
+  //return mySearch;
+
+  let haschildren = false;
+
+  arr.forEach(person => {
+    if(person.name === character){
+      let values = Object.values(person);
+      values.length === 4 ? haschildren = true: haschildren;
+    }
+  });
+
+  return haschildren;
+
 };
 
 /* ------------------------------------------------------------------------------------------------
